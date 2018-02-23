@@ -1,0 +1,6 @@
+[Unit]
+Description=Docker Images Cleanup
+
+[Service]
+Type=oneshot
+ExecStart=docker rmi --force $(docker images -q)
