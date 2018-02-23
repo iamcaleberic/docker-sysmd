@@ -15,7 +15,7 @@ Systemd Timer and Service for clearing up all images and/or containers daily
   `bash docker-sysmd.sh`
 
 - Follow the prompts
-  * Select `Image` to add timer and service for clearing all images daily
+  * Select `Images` to add timer and service for clearing all images daily
   * Select `Containers` to add timer and service for clearing all containers daily
 
 - Service and Timer files are located in the `lib` folder.
