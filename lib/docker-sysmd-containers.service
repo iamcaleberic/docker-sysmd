@@ -1,0 +1,6 @@
+[Unit]
+Description=Docker Containers Cleanup
+
+[Service]
+Type=oneshot
+ExecStart=docker rm --force $(docker ps -a -q)
