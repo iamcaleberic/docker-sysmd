@@ -37,15 +37,17 @@ function containers {
 OPTIONS="Images Containers Quit"
 select opt in $OPTIONS; do
   if [ "$opt" = "Images" ]; then
-   echo Copying over service file...
+   echo Checking service file...
    images
+   echo Copying over service file...
    echo Docker Images Timer/Service configuration complete.
    exit
 
   elif [ "$opt" = "Containers" ]; then
-    echo Copying service file...
+    echo Checking service file...  
     containers
-    echo Nginx Timer/Service configuration complete.
+    echo Copying service file...
+    echo Docker Containers Timer/Service configuration complete.
     exit
 
    elif [ "$opt" = "Quit" ]; then
