@@ -5,12 +5,12 @@ file2="/etc/systemd/system/docker-sysmd-containers.service"
 
 function images {
   echo "Images"
-  cp lib/docker-sysmd.service /etc/systemd/system/docker-sysmd.service
-  cp lib/docker-sysmd.timer /etc/systemd/system/docker-sysmd.timer
  if [[ -e "$file" ]]; then
    echo Configuration file exists. You all good.
  elif [ $? -eq 0 ]
  then
+   cp lib/docker-sysmd.timer /etc/systemd/system/docker-sysmd.timer
+   cp lib/docker-sysmd.service /etc/systemd/system/docker-sysmd.service
    systemctl enable docker-sysmd.timer && systemctl start docker-sysmd.timer
    echo "Timer Clears out all Images. Runs daily! :)"
  else
@@ -20,14 +20,14 @@ function images {
 
 function containers {
   echo "Containers"
-  cp lib/docker-sysmd-containers.service /etc/systemd/system/docker-sysmd-containers.service
-  cp lib/docker-sysmd-containers.timer /etc/systemd/system/docker-sysmd-containers.timer
  if [[ -e "$file2" ]]; then
    echo Configuration file exists. You all good.
  elif [ $? -eq 0 ]
  then
-    systemctl enable docker-sysmd-containers.timer && systemctl start docker-sysmd-containers.timer
-   echo "Timer Clears out all Containers. Runs daily! :)"
+   cp lib/docker-sysmd-containers.timer /etc/systemd/system/docker-sysmd-containers.timer
+   cp lib/docker-sysmd-containers.service /etc/systemd/system/docker-sysmd-containers.service
+   systemctl enable docker-sysmd-containers.timer && systemctl start docker-sysmd-containers.timer
+  echo "Timer Clears out all Containers. Runs daily! :)"
  else
    echo "Service/Timer configuration failed :("
  fi
