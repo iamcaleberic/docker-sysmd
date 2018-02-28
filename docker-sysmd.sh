@@ -38,6 +38,7 @@ function containers {
 }
 
 
+PS3="Please select service you want to install:"
 OPTIONS="Images Containers Quit"
 select opt in $OPTIONS; do
   if [ "$opt" = "Images" ]; then
