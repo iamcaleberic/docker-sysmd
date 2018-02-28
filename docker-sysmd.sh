@@ -9,6 +9,7 @@ function images {
    echo Configuration file exists. You all good.
  elif [ $? -eq 0 ]
  then
+   echo Copying and Enabling service ...
    cp lib/docker-sysmd.timer /etc/systemd/system/docker-sysmd.timer
    cp lib/docker-sysmd.service /etc/systemd/system/docker-sysmd.service
    systemctl enable docker-sysmd.timer && systemctl start docker-sysmd.timer
@@ -24,6 +25,7 @@ function containers {
    echo Configuration file exists. You all good.
  elif [ $? -eq 0 ]
  then
+   echo Copying and Enabling service ...
    cp lib/docker-sysmd-containers.timer /etc/systemd/system/docker-sysmd-containers.timer
    cp lib/docker-sysmd-containers.service /etc/systemd/system/docker-sysmd-containers.service
    systemctl enable docker-sysmd-containers.timer && systemctl start docker-sysmd-containers.timer
@@ -37,20 +39,16 @@ function containers {
 OPTIONS="Images Containers Quit"
 select opt in $OPTIONS; do
   if [ "$opt" = "Images" ]; then
-   images
-   echo Copying service file...
-   echo Docker Images Timer/Service configuration complete.
-   exit
-
+     images
+     echo Docker Images Timer/Service configuration complete.
+     exit
   elif [ "$opt" = "Containers" ]; then
     containers
-    echo Copying service file...
     echo Docker Containers Timer/Service configuration complete.
     exit
-
    elif [ "$opt" = "Quit" ]; then
-     echo Goodbye.
-     exit
+    echo Goodbye.
+    exit
    else
     clear
     echo Bad option
