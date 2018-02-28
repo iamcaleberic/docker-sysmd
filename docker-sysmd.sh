@@ -5,7 +5,7 @@ file2="/etc/systemd/system/docker-sysmd-containers.service"
 
 function images {
   echo "Images"
-  cp lib/docker-sysmd-service /etc/systemd/system/docker-sysmd.service
+  cp lib/docker-sysmd.service /etc/systemd/system/docker-sysmd.service
   cp lib/docker-sysmd.timer /etc/systemd/system/docker-sysmd.timer
  if [[ -e "$file" ]]; then
    echo Configuration file exists. You all good.
