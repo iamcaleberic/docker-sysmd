@@ -9,7 +9,7 @@ function images {
    echo Configuration file exists. You all good.
  elif [ $? -eq 0 ]
  then
-   echo Copying and Enabling service ...
+   echo "Copying and Enabling service ..."
    cp lib/docker-sysmd.timer /etc/systemd/system/docker-sysmd.timer
    cp lib/docker-sysmd.service /etc/systemd/system/docker-sysmd.service
    systemctl enable docker-sysmd.timer && systemctl start docker-sysmd.timer
@@ -25,7 +25,7 @@ function containers {
    echo Configuration file exists. You all good.
  elif [ $? -eq 0 ]
  then
-   echo Copying and Enabling service ...
+   echo "Copying and Enabling service ..."
    cp lib/docker-sysmd-containers.timer /etc/systemd/system/docker-sysmd-containers.timer
    cp lib/docker-sysmd-containers.service /etc/systemd/system/docker-sysmd-containers.service
    systemctl enable docker-sysmd-containers.timer && systemctl start docker-sysmd-containers.timer
