@@ -39,18 +39,18 @@ function containers {
 OPTIONS="Images Containers Quit"
 select opt in $OPTIONS; do
   if [ "$opt" = "Images" ]; then
-     images
-     echo Docker Images Timer/Service configuration complete.
-     exit
+    images
+    echo Docker Images Timer/Service configuration complete.
+    exit
   elif [ "$opt" = "Containers" ]; then
     containers
     echo Docker Containers Timer/Service configuration complete.
     exit
-   elif [ "$opt" = "Quit" ]; then
+  elif [ "$opt" = "Quit" ]; then
     echo Goodbye.
     exit
-   else
+  else
     clear
     echo Bad option
-   fi
+  fi
 done
