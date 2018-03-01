@@ -1,0 +1,6 @@
+[Unit]
+Description=Removes dangling images, stopped containers, unused networks and build cache.
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash -c "docker system prune -f"
