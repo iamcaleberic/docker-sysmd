@@ -3,4 +3,4 @@ Description=Docker Containers Cleanup
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/docker rm --force $(docker ps -a -q)
+ExecStart= /bin/bash -c "docker rm --force $(docker ps -a -q)"
