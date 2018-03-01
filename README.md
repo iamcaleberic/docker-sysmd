@@ -17,6 +17,7 @@ Systemd Timer and Service for clearing up all images and/or containers daily
 - Follow the prompts
   * Select `Images` to add timer and service for clearing all images daily
   * Select `Containers` to add timer and service for clearing all containers daily
+  * Select `Prune` to add timer and service to remove dangling images, stopped containers, unused networks and build cache daily. 
 
 - Service and Timer files are located in the `lib` folder.
 
