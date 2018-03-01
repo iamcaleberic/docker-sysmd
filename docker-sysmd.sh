@@ -2,6 +2,7 @@
 
 file="/etc/systemd/system/docker-sysmd.service"
 file2="/etc/systemd/system/docker-sysmd-containers.service"
+file3="/etc/systemd/system/docker-sysmd-prune.service"
 
 function images {
   echo "Images"
@@ -37,9 +38,26 @@ function containers {
  fi
 }
 
+function prune {
+  echo "Prune"
+ if [[ $? -eq 0 ]]; then
+   if [[ -e "$file3" ]]; then
+     echo Configuration file exists. You all good.
+   else
+     echo "Copying and Enabling service ..."
+     cp lib/docker-sysmd-prune.timer /etc/systemd/system/docker-sysmd-prune.timer
+     cp lib/docker-sysmd-prune.service /etc/systemd/system/docker-sysmd-prune.service
+     systemctl enable docker-sysmd-prune.timer && systemctl start docker-sysmd-prune.timer
+     echo "Timer Clears all stopped dangling and unsused networks. Runs daily! :)"
+   fi
+ else
+   echo "Service/Timer configuration failed :("
+ fi
+}
+
 
 PS3="Please select service you want to install:"
-OPTIONS="Images Containers Quit"
+OPTIONS="Images Containers Prune Quit"
 select opt in $OPTIONS; do
   if [ "$opt" = "Images" ]; then
     images
@@ -48,6 +66,10 @@ select opt in $OPTIONS; do
   elif [ "$opt" = "Containers" ]; then
     containers
     echo Docker Containers Timer/Service configuration complete.
+    exit
+  elif [ "$opt" = "Prune" ]; then
+    prune
+    echo Docker Prune Timer/Service configuration complete.
     exit
   elif [ "$opt" = "Quit" ]; then
     echo Goodbye.
