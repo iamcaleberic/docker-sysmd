@@ -3,4 +3,4 @@ Description=Docker Images Cleanup
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/docker rmi --force $(docker images -q)
+ExecStart=/bin/bash -c "docker rmi --force $(docker images -q)"
